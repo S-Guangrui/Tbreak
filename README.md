@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
+import Tabs, { Tab } from 'material-ui/Tabs';
 
-You can use the [editor on GitHub](https://github.com/S-Guangrui/Tbreak/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    marginTop: theme.spacing.unit * 3,
+  },
+});
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+class CenteredTabs extends React.Component {
+  state = {
+    value: 0,
+  };
 
-### Markdown
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+  render() {
+    const { classes } = this.props;
 
-```markdown
-Syntax highlighted code block
+    return (
+      <Paper className={classes.root}>
+        <Tabs
+          value={this.state.value}
+          onChange={this.handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab label="Item One" />
+          <Tab label="Item Two" />
+          <Tab label="Item Three" />
+        </Tabs>
+      </Paper>
+    );
+  }
+}
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/S-Guangrui/Tbreak/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+CenteredTabs.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
