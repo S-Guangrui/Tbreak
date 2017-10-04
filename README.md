@@ -1,46 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Tabs, { Tab } from 'material-ui/Tabs';
+# Setting up the Project
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: theme.spacing.unit * 3,
-  },
-});
+First you'll need [Node.js](https://nodejs.org) and the package manager
+that comes with it: [npm](https://www.npmjs.com/).
 
-class CenteredTabs extends React.Component {
-  state = {
-    value: 0,
-  };
+Once you've got that working, head to the command line where we'll set
+up our project.
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+## Clone the Tutorial
 
-  render() {
-    const { classes } = this.props;
+```
+git clone https://github.com/reactjs/react-router-tutorial
+cd react-router-tutorial
+cd lessons/01-setting-up
+npm install
+npm start
+```
 
-    return (
-      <Paper className={classes.root}>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
-        </Tabs>
-      </Paper>
-    );
-  }
-}
+Now open up [http://localhost:8080](http://localhost:8080)
 
-CenteredTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+Feel free to poke around the code to see how we're using webpack and npm
+scripts to run the app.
+
+You should see a "Hello React Router" message in the browser.
+
+## Make Some Changes
+
+Open up `modules/App.jsx` and change the text to something like "Hello
+<your name>". The browser automatically reloads with your new code.
+
+---
+
+[Next: Rendering a Router](../02-rendering-a-route/)
